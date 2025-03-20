@@ -4,7 +4,6 @@ NEWLINE = System.getProperty("line.separator")
 
 def tableName = (TABLE != null ? TABLE.getName() : "MY_TABLE").toLowerCase()
 
-// Helper function for YAML string escaping
 static def escapeYAML(String s) {
     return s.replace("\\", "\\\\")
             .replace("\"", "\\\"")
@@ -30,7 +29,6 @@ ROWS.each { row ->
         } else if (value instanceof Number || value instanceof Boolean) {
             formattedValue = value.toString()
         } else {
-            // Apply enhanced YAML escaping to all string representations
             def strVal = escapeYAML(value.toString())
             formattedValue = '"' + strVal + '"'
         }
